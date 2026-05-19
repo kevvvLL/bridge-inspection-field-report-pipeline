@@ -104,7 +104,6 @@ This tool inverts the organization. Same data, different axis. Plus:
 
 ```bash
 # Clone and install
-git clone https://github.com/<you>/bridge-pipeline.git
 cd bridge-pipeline
 pip install -r requirements.txt
 

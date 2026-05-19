@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pipeline output / intermediate artifacts
+# (keep sample_input.pdf as a committed demo, ignore actual runs)
+element_data.json
+classified.json
+stations.json
+field_report.pdf
+*.tmp.pdf

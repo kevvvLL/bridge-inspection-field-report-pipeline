@@ -1,0 +1,107 @@
+# AASHTO Standard Element Number Table (built-in, read-only)
+# Used as a fast-path lookup. Falls through to keyword matching if not found.
+# Reference: AASHTO Manual for Bridge Element Inspection (MBEI) 2nd ed.
+
+aashto_table:
+  # ---- SPAN / SUPERSTRUCTURE ----
+  # Decks & slabs
+  12:  {category: SPAN, name: "Reinforced Concrete Deck"}
+  13:  {category: SPAN, name: "Prestressed Concrete Deck"}
+  15:  {category: SPAN, name: "Prestressed Concrete Top Flange"}
+  16:  {category: SPAN, name: "Reinforced Concrete Top Flange"}
+  28:  {category: SPAN, name: "Steel Deck w/ Open Grid"}
+  29:  {category: SPAN, name: "Steel Deck w/ Concrete Filled Grid"}
+  30:  {category: SPAN, name: "Steel Deck Corrugated/Orthotropic"}
+  31:  {category: SPAN, name: "Timber Deck"}
+  38:  {category: SPAN, name: "Reinforced Concrete Slab"}
+  54:  {category: SPAN, name: "Timber Slab"}
+
+  # Girders, beams, stringers, floor systems
+  102: {category: SPAN, name: "Steel Closed Web/Box Girder"}
+  104: {category: SPAN, name: "Prestressed Concrete Closed Web/Box Girder"}
+  105: {category: SPAN, name: "Reinforced Concrete Closed Web/Box Girder"}
+  106: {category: SPAN, name: "Other Closed Web/Box Girder"}
+  107: {category: SPAN, name: "Steel Open Girder/Beam"}
+  109: {category: SPAN, name: "Prestressed Concrete Open Girder/Beam"}
+  110: {category: SPAN, name: "Reinforced Concrete Open Girder/Beam"}
+  111: {category: SPAN, name: "Timber Open Girder/Beam"}
+  113: {category: SPAN, name: "Stringer (Steel)"}
+  115: {category: SPAN, name: "Stringer (Prestressed Concrete)"}
+  116: {category: SPAN, name: "Stringer (Reinforced Concrete)"}
+  117: {category: SPAN, name: "Stringer (Timber)"}
+  120: {category: SPAN, name: "Truss (Steel)"}
+  135: {category: SPAN, name: "Truss (Timber)"}
+  141: {category: SPAN, name: "Steel Arch"}
+  142: {category: SPAN, name: "Other Arch"}
+  144: {category: SPAN, name: "Masonry Arch"}
+  145: {category: SPAN, name: "Reinforced Concrete Arch"}
+  146: {category: SPAN, name: "Steel Eyebar/Cable/Wire/HD Bar Primary"}
+  147: {category: SPAN, name: "Steel Main Cables"}
+  148: {category: SPAN, name: "Secondary Steel Cables"}
+  149: {category: SPAN, name: "Steel Floor Beam"}
+  152: {category: SPAN, name: "Prestressed Concrete Floor Beam"}
+  154: {category: SPAN, name: "Reinforced Concrete Floor Beam"}
+  155: {category: SPAN, name: "Timber Floor Beam"}
+
+  # Railings (on deck = span-bound)
+  330: {category: SPAN, name: "Metal Bridge Railing"}
+  331: {category: SPAN, name: "Reinforced Concrete Bridge Railing"}
+  332: {category: SPAN, name: "Timber Bridge Railing"}
+  333: {category: SPAN, name: "Other Bridge Railing"}
+  334: {category: SPAN, name: "Masonry Bridge Railing"}
+
+  # ---- SUBSTRUCTURE ----
+  202: {category: SUBSTRUCTURE, name: "Steel Column"}
+  203: {category: SUBSTRUCTURE, name: "Other Column"}
+  204: {category: SUBSTRUCTURE, name: "Prestressed Concrete Column"}
+  205: {category: SUBSTRUCTURE, name: "Reinforced Concrete Column"}
+  206: {category: SUBSTRUCTURE, name: "Timber Column"}
+  207: {category: SUBSTRUCTURE, name: "Steel Tower"}
+  208: {category: SUBSTRUCTURE, name: "Timber Trestle"}
+  210: {category: SUBSTRUCTURE, name: "Reinforced Concrete Pier Wall"}
+  211: {category: SUBSTRUCTURE, name: "Other Pier Wall"}
+  212: {category: SUBSTRUCTURE, name: "Timber Pier Wall"}
+  213: {category: SUBSTRUCTURE, name: "Masonry Pier Wall"}
+  215: {category: SUBSTRUCTURE, name: "Reinforced Concrete Abutment"}
+  216: {category: SUBSTRUCTURE, name: "Timber Abutment"}
+  217: {category: SUBSTRUCTURE, name: "Masonry Abutment"}
+  218: {category: SUBSTRUCTURE, name: "Other Abutment"}
+  219: {category: SUBSTRUCTURE, name: "Steel Abutment"}
+  220: {category: SUBSTRUCTURE, name: "Reinforced Concrete Submerged Pile Cap/Footing"}
+  225: {category: SUBSTRUCTURE, name: "Steel Pile"}
+  226: {category: SUBSTRUCTURE, name: "Prestressed Concrete Pile"}
+  227: {category: SUBSTRUCTURE, name: "Reinforced Concrete Pile"}
+  228: {category: SUBSTRUCTURE, name: "Timber Pile"}
+  229: {category: SUBSTRUCTURE, name: "Other Pile"}
+  231: {category: SUBSTRUCTURE, name: "Steel Pier Cap"}
+  233: {category: SUBSTRUCTURE, name: "Prestressed Concrete Pier Cap"}
+  234: {category: SUBSTRUCTURE, name: "Reinforced Concrete Pier Cap"}
+  235: {category: SUBSTRUCTURE, name: "Timber Pier Cap"}
+  236: {category: SUBSTRUCTURE, name: "Other Pier Cap"}
+
+  # ---- INTERFACE (bearings, joints — physically on pier/abutment) ----
+  300: {category: INTERFACE, name: "Strip Seal Expansion Joint"}
+  301: {category: INTERFACE, name: "Pourable Joint Seal"}
+  302: {category: INTERFACE, name: "Compression Joint Seal"}
+  303: {category: INTERFACE, name: "Assembly Joint with Seal (Modular)"}
+  304: {category: INTERFACE, name: "Open Expansion Joint"}
+  305: {category: INTERFACE, name: "Assembly Joint without Seal"}
+  306: {category: INTERFACE, name: "Other Joint"}
+  310: {category: INTERFACE, name: "Elastomeric Bearing"}
+  311: {category: INTERFACE, name: "Movable Bearing"}
+  312: {category: INTERFACE, name: "Enclosed/Concealed Bearing"}
+  313: {category: INTERFACE, name: "Fixed Bearing"}
+  314: {category: INTERFACE, name: "Pot Bearing"}
+  315: {category: INTERFACE, name: "Disk Bearing"}
+  316: {category: INTERFACE, name: "Other Bearing"}
+
+  # ---- WHOLE-BRIDGE / OTHER (display as a single section at end) ----
+  320: {category: WHOLE_BRIDGE, name: "Approach Slab", display_mode: whole}
+  321: {category: WHOLE_BRIDGE, name: "Reinforced Concrete Approach Slab", display_mode: whole}
+  510: {category: WHOLE_BRIDGE, name: "Wearing Surfaces", display_mode: whole}
+  513: {category: WHOLE_BRIDGE, name: "Bridge Drainage System", display_mode: whole}
+  515: {category: WHOLE_BRIDGE, name: "Steel Protective Coating", display_mode: whole}
+  519: {category: WHOLE_BRIDGE, name: "Joint Seal (general)", display_mode: whole}
+  520: {category: WHOLE_BRIDGE, name: "Slope Protection", display_mode: whole}
+  521: {category: WHOLE_BRIDGE, name: "Concrete Protective Coating", display_mode: whole}
+  540: {category: WHOLE_BRIDGE, name: "Sign Structure (overhead)", display_mode: whole}

@@ -1,0 +1,121 @@
+# Project-level configuration for the bridge inspection pipeline.
+# This file PERSISTS and GROWS — every time the user resolves an UNCERTAIN
+# element via the review UI, a learned rule may be appended here.
+
+owner: "Generic"
+
+# Bent-Pier numbering alignment.
+# Some reports use "Bent" and "Pier" interchangeably, sometimes with offset:
+#   - "bent_equals_pier":   Bent N == Pier N (1-to-1)
+#   - "bent_minus_one":     Bent N == Pier (N-1)   (Bent 1 = Abut 1)
+#   - "none":               Don't merge Bent and Pier
+bent_pier_alignment: bent_minus_one
+
+# Built-in keyword rules (high confidence — applied automatically).
+# Order matters: most specific terms first to avoid false matches.
+# A rule matches if any of its keywords is a substring (case-insensitive) of
+# the element name. exclude_keywords skip a rule when present.
+keyword_rules:
+
+  # INTERFACE — most specific terms first
+  - keywords: ["pot bearing", "disk bearing", "elastomeric bearing",
+               "movable bearing", "fixed bearing", "bearing"]
+    exclude_keywords: ["bearing seat", "bearing pad failure photo"]
+    category: INTERFACE
+    confidence: high
+
+  - keywords: ["expansion joint", "modular joint", "strip seal",
+               "pourable seal", "compression seal", "joint seal", "joint"]
+    exclude_keywords: ["construction joint"]
+    category: INTERFACE
+    confidence: high
+
+  # SUBSTRUCTURE
+  - keywords: ["pier cap", "bent cap"]
+    category: SUBSTRUCTURE
+    confidence: high
+
+  - keywords: ["pier wall", "pier column", "column", "pedestal", "tower"]
+    exclude_keywords: ["pier protection", "column protection"]
+    category: SUBSTRUCTURE
+    confidence: high
+
+  - keywords: ["abutment", "backwall", "wingwall", "wing wall"]
+    category: SUBSTRUCTURE
+    confidence: high
+
+  - keywords: ["footing", "pile cap", "pile"]
+    category: SUBSTRUCTURE
+    confidence: high
+
+  # SPAN
+  - keywords: ["deck"]
+    exclude_keywords: ["deck drain", "deck joint"]
+    category: SPAN
+    confidence: high
+
+  - keywords: ["slab"]
+    exclude_keywords: ["approach slab"]
+    category: SPAN
+    confidence: high
+
+  - keywords: ["girder", "beam", "stringer", "floor beam"]
+    category: SPAN
+    confidence: high
+
+  - keywords: ["truss", "arch", "cable", "eyebar", "tie rod"]
+    category: SPAN
+    confidence: high
+
+  - keywords: ["railing", "parapet", "barrier", "curb"]
+    category: SPAN
+    confidence: high
+
+  # WHOLE_BRIDGE
+  - keywords: ["wearing surface", "overlay", "asphalt", "wearing course"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+  - keywords: ["paint", "protective coating", "coating system"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+  - keywords: ["drainage", "scupper", "downspout"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+  - keywords: ["approach slab", "approach"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+  - keywords: ["slope protection", "riprap"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+  - keywords: ["sign", "lighting", "utility"]
+    category: WHOLE_BRIDGE
+    display_mode: whole
+    confidence: high
+
+# Owner-specific number mapping (project-specific element numbers that
+# aren't AASHTO). Add entries here when an owner uses custom numbering.
+# Format: <number>: {category, display_mode (optional), name (optional)}
+owner_mapping: {}
+# Example:
+#   "NY-1010":
+#     category: SPAN
+#     name: "NYSDOT Bridge Deck"
+
+# Learned rules (low confidence — auto-added by the review UI).
+# These rules still route to the UNCERTAIN flow next time but pre-fill
+# the user's previous answer. User can upgrade them to confidence: high
+# in the review UI to make them automatic.
+learned_rules: []
+
+# Toggles
+aashto_enabled: true
